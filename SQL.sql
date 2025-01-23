@@ -81,3 +81,51 @@ FROM
 	NashvilleHousing
 WHERE
 	PropertyAddress is null
+
+
+--consistency in SoldAsVacant by replacing 'N' and 'Y' with 'No' and 'Yes'.
+	--checking for null values
+SELECT 
+	SoldAsVacant 
+FROM
+	NashvilleHousing
+WHERE
+	SoldAsVacant is null
+
+	--replacing N,Y 
+SELECT	
+	SoldAsVacant
+FROM
+	NashvilleHousing
+WHERE
+	SoldAsVacant IN ('N','Y')
+
+UPDATE 
+	NashvilleHousing
+SET
+	SoldAsVacant=CASE
+	WHEN SoldAsVacant IN ('N','n') THEN 'No'
+	WHEN SoldAsVacant IN ('Y','y') THEN 'Yes'
+	ELSE SoldAsVacant
+	END;
+
+--removing duplicates
+
+SELECT UniqueID,COUNT( *) AS CountID
+FROM
+	NashvilleHousing
+GROUP BY 
+	UniqueID
+HAVING COUNT( *)>1
+	
+	--Deleting Duplicates
+WITH CTE_Dup AS(
+SELECT 
+	*, 
+	ROW_NUMBER() OVER(PARTITION BY UniqueID ORDER BY (SELECT NULL)) AS RowNum
+FROM 
+	NashvilleHousing
+	)
+DELETE NashvilleHousing
+WHERE RowNum>1;
+
