@@ -16,7 +16,7 @@ The project aims to:
 ### 1. **SQL Data Cleaning**
    - **Remove Duplicates**: SQL queries are used to identify and remove duplicate records from the dataset.
    - **Handle Missing Data**: Missing values are filled using SQL functions like `COALESCE` and `IS NULL`.
-   - **Add Calculated Columns**: Columns such as `age_of_property` are created using SQL expressions.
+   - **Add Calculated Columns**: Columns such as `PropertyAge` are created using SQL expressions.
 
 ### 2. **Python Data Cleaning**
    - **Missing Data**: Further imputation is handled in Python using Pandas, where necessary.
