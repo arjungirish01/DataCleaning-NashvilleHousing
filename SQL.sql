@@ -133,11 +133,28 @@ FROM
 DELETE NashvilleHousing
 WHERE UniqueID IN(
 	SELECT 
-		UniqueID,
-		RowNum
+		UniqueID
 	FROM
 		CTE_Dup
 	WHERE 
 		RowNum>1
 		)
+
+--Property Age
+	--	Create New Column
+ALTER TABLE NashvilleHousing
+ADD PropertyAge INT
+	--PropertyAge
+WITH CTE_propAge AS(
+SELECT 
+	UniqueID,YearBuilt,(YEAR(GETDATE())-YearBuilt) As PropAge
+FROM
+	NashvilleHousing
+	)
+UPDATE Nh
+SET Nh.PropertyAge=CTE.PropAge
+FROM NashvilleHousing Nh
+JOIN CTE_propAge CTE
+ON Nh.UniqueID=CTE.UniqueID
+
 
