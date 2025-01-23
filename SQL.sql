@@ -33,8 +33,12 @@ ALTER TABLE
 DROP COLUMN 
 	SaleDate
 
---FILLING MISSING PROPERTY ADDRESS
+--MISSING PROPERTY ADDRESS
+SELECT 
+	UniqueID,
+	COALESCE(PropertyAddress,'Unknown') AS PropertyAdress
 
+	--FILLING MISSING PROPERTY ADDRESS
 SELECT * 
 FROM 
 	NashvilleHousing NH1
@@ -127,5 +131,13 @@ FROM
 	NashvilleHousing
 	)
 DELETE NashvilleHousing
-WHERE RowNum>1;
+WHERE UniqueID IN(
+	SELECT 
+		UniqueID,
+		RowNum
+	FROM
+		CTE_Dup
+	WHERE 
+		RowNum>1
+		)
 
