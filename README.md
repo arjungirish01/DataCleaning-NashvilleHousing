@@ -67,7 +67,7 @@ nashville-housing-data-cleaning/
 ## Usage
 
 ### SQL Queries
-The SQL queries used for data cleaning (removing duplicates, handling missing values, and adding calculated columns) are available in the `sql_queries.sql` file.
+The SQL queries used for data cleaning (removing duplicates, handling missing values, and adding calculated columns) are available in the 'SQL.sql` file.
 
 ### Jupyter Notebook
 Open the `data_cleaning_notebook.ipynb` file in Jupyter Notebook to explore the data, run queries, and visualize the cleaned data.
