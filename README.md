@@ -70,7 +70,7 @@ nashville-housing-data-cleaning/
 The SQL queries used for data cleaning (removing duplicates, handling missing values, and adding calculated columns) are available in the 'SQL.sql` file.
 
 ### Jupyter Notebook
-Open the `data_cleaning_notebook.ipynb` file in Jupyter Notebook to explore the data, run queries, and visualize the cleaned data.
+Open the `DataCleaningNotebook.ipynb` file in Jupyter Notebook to explore the data, run queries, and visualize the cleaned data.
 
 ### Python Script
 Run the Python script `data_cleaning.py` to perform additional data cleaning and preprocessing:
